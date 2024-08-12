@@ -7,8 +7,9 @@ module.exports = {
   mode: "development",
   entry: path.resolve(__dirname, "../src/main.js"), //入口文件
   output: {
-    filename: "main.js",
+    filename: "[name].[hash].js",
     path: path.resolve(__dirname, "../dist"),
+    assetModuleFilename: "images/[hash][ext][query]",
   },
   module: {
     rules: [
@@ -60,7 +61,16 @@ module.exports = {
           "less-loader",
         ],
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        type: "asset/resource",
+      },
     ],
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "../src/"),
+    },
   },
   plugins: [
     new webpack.DefinePlugin({
