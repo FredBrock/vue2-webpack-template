@@ -1,6 +1,19 @@
 <template>
-  <div id="app">Hello Vue~</div>
+  <div id="app">
+    Hello Vue~
+    <HomeView></HomeView>
+  </div>
 </template>
+<script>
+import HomeView from "./HomeView.vue"; // @ is an alias to /src
+
+export default {
+  name: "App",
+  components: {
+    HomeView,
+  },
+};
+</script>
 
 <style lang="less">
 #app {
